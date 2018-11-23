@@ -9,7 +9,7 @@ public class Arbitrarily_arranged {
 	public static int select;
 	
 	public static ArrayList<Integer> begin = new ArrayList<>();
-	public static int[] end = new int[begin.size()];
+	public static int[] end = new int[number];
 
 	public static void main(String[] args) {
 
@@ -19,15 +19,15 @@ public class Arbitrarily_arranged {
 		
 		System.out.print("排列前:");
 		
-		for (int i=1;i<=number;i++) {
+		for (int i=0;i<number;i++) {
 			System.out.print(i+" ");
-			begin.add(i);
+			begin.add(i+1);
 		}
 		
 		System.out.println();
 		System.out.print("排列後:");
 		
-		for (int i=0;i<end.length;i++) {
+		for (int i=0;i<number;i++) {
 			random(i);
 			System.out.print(end[i] + " ");
 		}
