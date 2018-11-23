@@ -3,14 +3,12 @@ package com.data.second;
 import java.util.Scanner;
 
 public class GCD {
-
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		int a;
 		int b;
-		int c;
-		int n;
 		
         Scanner scanner = new Scanner(System.in);
         
@@ -20,34 +18,43 @@ public class GCD {
         System.out.print("n = "); 
         b = scanner.nextInt();
         
-		if(a>=0 && b>=0) {
-			if(a==0)
-				System.out.println("Wrong");
-			else if(b==0) {
-				System.out.println(a);
-			}
-			else{
-				for(n=1;;n++) {
-					c=a%b;
-					
-					if(c==0) {
-						break;
-					}
-					
-					else {
-						a=b;
-						b=c;
-					}
-				}
-				System.out.println(b);
-			}
+		if(a>0 && b>=0) {
+			System.out.println("GCD:" + GCD(a,b)); 
 		}
         		
 		else {
 			System.out.println("Wrong");
 		}
+	}
+	
+	public static int GCD(int a, int b) {
+		
+		if(a>=b) {
+			if(b==0) {
+				return a;
+			}
+			
+			else {
+				return GCD(b,a%b);
+			}
+		}
+		else {
+			int c=a;
+			a=b;
+			b=c;	
+			
+			if(b==0) {
+				return a;
+			}
+			
+			else {
+				return GCD(b,a%b);
+			}
+		}
+		
 
-
+		
+		
 	}
 
 }

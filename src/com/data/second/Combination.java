@@ -5,11 +5,7 @@ import java.util.Scanner;
 public class Combination {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		int i;
-		int j;
-		
+		// TODO Auto-generated method stub		
 		Scanner scanner = new Scanner(System.in);
 		
 		System.out.print("輸入n=");
@@ -17,27 +13,20 @@ public class Combination {
 		System.out.print("輸入m=");
 		int m = scanner.nextInt();
 		
-		int[][] c = new int[n+1][m+1];
-		
-        for (i=0;i<=n;i++){        	
-               for (j=0;j<=i;j++){
-            	   
-            	   if(j<=m) {
-                	   if(j==0 || i==j) {
-                  			c[i][j] = 1;
-                  		}
-                  		
-                  		else {
-                  			c[i][j] = c[i-1][j]+c[i-1][j-1];
-                  		}
-            	   }
-           		
-               }
-
-
-           }
-
-		System.out.print("C(n,m)="+c[n][m]);
+		if (n<0 || m<0 || n<m) {
+			System.out.println("Wrong");
+		} 
+		else {
+			System.out.print("C("+n+","+m+")="+Combination(n,m));
+		}
 	}
-
+	
+	public static int Combination(int a, int b) {
+		if (a==b || b==0) {
+			return 1;
+		} else {
+			return Combination(a-1,b) + Combination(a-1,b-1);
+		}
+	}
+	
 }

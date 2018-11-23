@@ -8,17 +8,24 @@ public class Fibonacci_numbers {
 		System.out.print("輸入n=");
 		Scanner scanner = new Scanner(System.in);
 		int number = scanner.nextInt();
-		int[] array = new int[number];
-		array[0] = 0;
-		array[1] = 0;
-		array[2] = 1;
-		System.out.print(array[0]+","+array[1]+","+array[2]);
-
-		for(int a=3;a<array.length;a++) {
-			array[a]=array[a-1]+array[a-2];
-			System.out.print(","+array[a]);
+		
+		if(number>0){
+			System.out.println("GCD:" + Fibonacci_numbers(number)); 
+		}        		
+		else {
+			System.out.println("Wrong");
 		}
 		
-		
+	}
+	public static int Fibonacci_numbers(int n) {
+		if(n==0){
+			return 0;
+		}
+		if(n==1){
+			return 1;
+		} 
+		else{
+			return Fibonacci_numbers(n-1) + Fibonacci_numbers(n-2);
+		}
 	}
 }
