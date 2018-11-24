@@ -7,27 +7,23 @@ import java.util.Scanner;
 public class Arbitrarily_arranged {
 	
 	public static int select;
-	
+	public static int[] user = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 	public static ArrayList<Integer> begin = new ArrayList<>();
-	public static int[] end = new int[number];
+	public static int[] end = new int[user.length];
 
 	public static void main(String[] args) {
-
-		System.out.print("輸入n=");
-		Scanner scanner = new Scanner(System.in);
-		int number = scanner.nextInt();
 		
 		System.out.print("排列前:");
 		
-		for (int i=0;i<number;i++) {
+		for (int i=1;i<user.length+1;i++) {
 			System.out.print(i+" ");
-			begin.add(i+1);
+			begin.add(i);
 		}
 		
 		System.out.println();
 		System.out.print("排列後:");
 		
-		for (int i=0;i<number;i++) {
+		for (int i=0;i<user.length;i++) {
 			random(i);
 			System.out.print(end[i] + " ");
 		}
