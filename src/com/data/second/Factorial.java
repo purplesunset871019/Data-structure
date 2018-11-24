@@ -1,4 +1,4 @@
-
+//n階層計算
 package com.data.second;
 
 import java.util.Scanner;

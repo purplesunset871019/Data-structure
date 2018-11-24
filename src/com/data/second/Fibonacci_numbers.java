@@ -1,3 +1,4 @@
+//費氏級數
 package com.data.second;
 
 import java.util.Scanner;

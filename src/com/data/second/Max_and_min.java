@@ -1,3 +1,4 @@
+//計算陣列中元素的最大值及最小值
 package com.data.second;
 
 public class Max_and_min {

@@ -1,3 +1,4 @@
+//N項資料任意排列
 package com.data.second;
 
 import java.util.ArrayList;

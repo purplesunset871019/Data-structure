@@ -1,3 +1,4 @@
+//最大公因數
 package com.data.second;
 
 import java.util.Scanner;

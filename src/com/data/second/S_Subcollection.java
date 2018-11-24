@@ -1,3 +1,4 @@
+//產生集合S的子集合
 package com.data.second;
 
 import java.util.ArrayList;

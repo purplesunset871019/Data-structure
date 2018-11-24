@@ -1,3 +1,4 @@
+//組合公式
 package com.data.second;
 
 import java.util.Scanner;
