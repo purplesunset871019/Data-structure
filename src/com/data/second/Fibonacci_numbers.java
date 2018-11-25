@@ -10,7 +10,7 @@ public class Fibonacci_numbers {
 		Scanner scanner = new Scanner(System.in);
 		int number = scanner.nextInt();
 		
-		if(number>0){
+		if(number>=0){
 			System.out.println("GCD:" + Fibonacci_numbers(number)); 
 		}        		
 		else {

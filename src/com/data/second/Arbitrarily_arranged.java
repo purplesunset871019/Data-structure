@@ -16,9 +16,9 @@ public class Arbitrarily_arranged {
 		
 		System.out.print("排列前:");
 		
-		for (int i=1;i<user.length+1;i++) {
+		for (int i=0;i<user.length;i++) {
 			System.out.print(i+" ");
-			begin.add(i);
+			begin.add(user[i]);
 		}
 		
 		System.out.println();

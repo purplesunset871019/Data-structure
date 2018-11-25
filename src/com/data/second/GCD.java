@@ -14,9 +14,9 @@ public class GCD {
         Scanner scanner = new Scanner(System.in);
         
         System.out.println("輸入兩數:"); 
-        System.out.print("m = "); 
+        System.out.print("a = "); 
         a = scanner.nextInt();
-        System.out.print("n = "); 
+        System.out.print("b = "); 
         b = scanner.nextInt();
         
 		if(a>0 && b>=0) {
