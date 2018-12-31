@@ -5,31 +5,27 @@ import java.util.Scanner;
 
 public class Quick_Sort {
 	
-	static int []num = new int[10];;
+	static int []num = new int[10];
 	static int times=1;
 	
     public static void main(String [] argv){
     	
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("請輸入選取數字上限：");
-		int n = scanner.nextInt();
+		int upperlimit = scanner.nextInt();
+    	    	
+		Random rand = new Random();
     	
-    	
-    	
-    	Random rand = new Random();
-    	
-		for (int i=0; i<10; i++){
-			num[i] = rand.nextInt(n)+1;		// 將隨機數(1-49)放入 sixNum[i]
-			for (int j=0; j<i;){			// 與前數列比較，若有相同則再取亂數
-				if (num[j]==num[i]){	
-					num[i] = rand.nextInt(n)+1;
+		for (int i=0;i<10;i++){
+			num[i] = rand.nextInt(upperlimit)+1;		// 將隨機數(1-49)放入 sixNum[i]
+			for (int j=0;j<i;){			// 與前數列比較，若有相同則再取亂數
+				if (num[j] == num[i]){	
+					num[i] = rand.nextInt(upperlimit)+1;
 					j=0;			// 避面重新亂數後又產生相同數字，若出現重覆，迴圈從頭開始重新比較所有數
 				}
 				else j++;			// 若都不重複則下一個數
 			}
 		}
-    	
-    	
     	
     	System.out.print("原始資料：");
         for(int i : num){
