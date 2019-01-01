@@ -1,59 +1,95 @@
 package com.data.third;
 
+import static java.lang.System.out;
+import static java.util.Collections.swap;
+import java.util.*;
+import java.util.Comparator;
+import java.util.List;
+
 public class Try {
 	
-	 static int[] data = {31, 85, 72, 20, 51, 88, 92, 90, 22, 58};
+    public static <T extends Comparable<? super T>> 
+    int ascending(T t1, T t2) {  return t1.compareTo(t2); }
 
-	    public static void main(String[] args) {
-	        Try quickSort = new Try();
-	        System.out.print("原始資料；");
-	        quickSort.showdata();
-	        quickSort.quick(0, data.length - 1, data);
-	        System.out.print("排序結果；");
-	        quickSort.showdata();
-	    }
+public static <T extends Comparable<? super T>> 
+    int descending(T t1, T t2) { return -ascending(t1, t2); }
 
-	    public void showdata() {
-	        for (int i = 0; i < data.length; i++) {
-	            System.out.print(data[i] + " ");
-	        }
-	        System.out.println();
-	    }
+public static <T extends Comparable<? super T>> 
+    void heapSort(List<T> list) { heapSort(list, Try::ascending); }
+    
+private static final int OFFSET = 1;
+    
+public static <T> void heapSort(
+    List<T> list, Comparator<? super T> c) {
+    heapTree(list, c);
+    selectFromHeap(list, c);
+}
 
-	    public void quick(int left, int right, int[] data) {
-	        //代表排序已結束
-	        if (left > right) {
-	            return;
-	        }
-	        int startIndex = left; //代表最左邊那個數字的起始index
-	        int endIndex = right;   //代表最右邊那個數字的起始index
-	        int key = data[left]; //用來儲存要排序的數字陣列最左邊的數字
+private static <T> void heapTree(List<T> list, Comparator<? super T> c) {
+    for(int i = 1, end = list.size() + 1; i < end; i++) { 
+        bubbleLeaf(list, i, c); 
+    }
+}
 
-	        while (startIndex != endIndex) {
-	            //要先從右往左找Kj(小於key)
-	            while (data[endIndex] >= key && startIndex < endIndex) {
-	                endIndex--;
-	            }
-	            //要先從左往右找Ki(大於key)
-	            while (data[startIndex] <= key && startIndex < endIndex) {
-	                startIndex++;
-	            }
-	            //i<j => Kj、Ki互換
-	            if (startIndex < endIndex) {
-	                int temp = data[startIndex];
-	                data[startIndex] = data[endIndex];
-	                data[endIndex] = temp;
-	            }
-	            System.out.print("[處理過程]=> ");
-	            showdata();
-	        }
-	        //i>=j => key、Kj互換
-	        data[left] = data[startIndex];
-	        data[startIndex] = key;
+private static <T> void selectFromHeap(List<T> list, 
+                            Comparator<? super T> c) {
+    for(int end = list.size(); end > OFFSET; end--) {
+        swap(list, 1 - OFFSET, end - OFFSET);
+        bubbleRoot(list, end, c);
+    }
+}
 
-	        //key左邊那堆數再執行一次
-	        quick(left, startIndex - 1, data);
-	        //key右邊那堆數再執行一次
-	        quick(startIndex + 1, right, data);
-	    }
+private static <T> void bubbleLeaf(List<T> list, 
+                            int eleIdx, Comparator<? super T> c) {
+    for(int childIdx = eleIdx, parentIdx = eleIdx / 2;
+        isBubbleable(list, childIdx, parentIdx, c);
+        childIdx = parentIdx, parentIdx = childIdx / 2) {
+         swap(list, parentIdx - OFFSET, childIdx - OFFSET); 
+    }
+}
+
+private static <T> boolean isBubbleable(List<T> list, int childIdx, 
+             int parentIdx, Comparator<? super T> c) {
+    return childIdx > OFFSET && c.compare(
+       list.get(parentIdx - OFFSET), list.get(childIdx - OFFSET)) < 0;
+}
+
+private static <T> void bubbleRoot(List<T> list, 
+                            int end, Comparator<? super T> c) {
+    for(int parentIdx = 0 + OFFSET, 
+            childIdx = idxFromChilds(list, parentIdx, end, c);
+        childIdx < end && 
+        c.compare(list.get(childIdx - OFFSET), 
+                  list.get(parentIdx - OFFSET)) > 0; 
+        parentIdx = childIdx, 
+        childIdx = idxFromChilds(list, parentIdx, end, c)) {
+        swap(list, parentIdx - OFFSET, childIdx - OFFSET); 
+    }
+}
+
+private static <T> int idxFromChilds(List<T> list, 
+                     int parentIdx, int end, Comparator<? super T> c) {
+    int childIdx = parentIdx * 2;
+
+    return isRightLeafSuitable(list, childIdx, end, c) ? 
+          childIdx + 1 : childIdx;
+}
+
+private static <T> boolean isRightLeafSuitable(List<T> list, 
+                      int childIdx, int end, Comparator<? super T> c) {
+    return childIdx < end - 1 && 
+           c.compare(list.get(childIdx + 1 - OFFSET), 
+                     list.get(childIdx - OFFSET)) > 0;
+}
+
+public static void main(String[] args) {
+    List<Integer> list = 
+        new ArrayList<>(Arrays.asList(10, 9, 1, 2, 5, 3, 8, 7, 12, 11));
+    
+    heapSort(list);
+    out.println(list);
+    
+    heapSort(list, Try::descending);
+    out.println(list);
+}
 }

@@ -1,3 +1,4 @@
+//氣泡排序法
 package com.data.third;
 
 import java.util.Random;
@@ -18,7 +19,6 @@ public class Bubble_Sort {
 		int codenumber=0;
 		
 		Random rand = new Random();
-		
 		for (int z=0;z<num.length;z++){
 			num[z] = rand.nextInt(upperlimit)+1;		// 將隨機數(1-49)放入 sixNum[i]
 			for (int x=0;x<z;){			// 與前數列比較，若有相同則再取亂數
@@ -37,7 +37,6 @@ public class Bubble_Sort {
         System.out.println();
 		
 		for(i=0;i<num.length-1;i++){
-						
 			for(j=0;j<num.length-1;j++){
 				
 				codenumber=0;
@@ -48,13 +47,19 @@ public class Bubble_Sort {
 					}
 				}
 				
+				if(codenumber == num.length-1 && j == 0) {
+					System.out.print("排序結果：");
+			        for(int original : num){
+			            System.out.print(original + " ");
+			        }
+			        break;
+				}
+				
 				if(codenumber!=num.length-1 && j==0) {
 					System.out.println("處理過程"+(i+1)+"：");
-					
 				}
 				
 				if(num[j+1]<num[j]){
-					
 					int tump=num[j];
 					num[j]=num[j+1];
 					num[j+1]=tump;
@@ -67,11 +72,9 @@ public class Bubble_Sort {
 							counter=0;
 						}
 					}
-					
 				} 
 			}
 			System.out.println();
-			
 		}
 	}
 }

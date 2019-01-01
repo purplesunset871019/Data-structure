@@ -1,3 +1,4 @@
+//快速排序法
 package com.data.third;
 
 import java.util.Random;
@@ -15,7 +16,6 @@ public class Quick_Sort {
 		int upperlimit = scanner.nextInt();
     	    	
 		Random rand = new Random();
-    	
 		for (int i=0;i<10;i++){
 			num[i] = rand.nextInt(upperlimit)+1;		// 將隨機數(1-49)放入 sixNum[i]
 			for (int j=0;j<i;){			// 與前數列比較，若有相同則再取亂數
@@ -46,21 +46,17 @@ public class Quick_Sort {
     
     public static void sort(int left, int right){
         //確定是否可以排序
-    	
     	if(left < right){
-
     		int i = left;
             int j = right+1;
     		
             while(true){
                 //向右找，直到找到比基準點大的
                 while(i + 1 < num.length && num[++i] < num[left]) {
-                	
                 };
                 
                 //向左找，直到找到比基準點小的
-                while(j - 1 >= 0 && num[--j] > num[left]) {
-                	
+                while(j - 1 >= 0 && num[--j] > num[left]) {	
                 };
                 
                 if(i >= j)
@@ -86,6 +82,7 @@ public class Quick_Sort {
             System.out.print("處理過程"+times+"   ：");
             times++;
         }
+        
         else {
             System.out.print("處理過程"+times+"：");
             times++;
