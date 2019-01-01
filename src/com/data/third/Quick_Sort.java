@@ -83,7 +83,7 @@ public class Quick_Sort {
         num[j] = temp;
         
         if(times<10) {
-            System.out.print("處理過程"+times+" ：");
+            System.out.print("處理過程"+times+"   ：");
             times++;
         }
         else {
@@ -92,7 +92,7 @@ public class Quick_Sort {
         }
 
         for(int z = 0; z < num.length; z++) {
-        	System.out.print("["+num[z]+"]"+" ");
+        	System.out.print("["+num[z]+"]"+"\t");
         }
         System.out.println();
     	
