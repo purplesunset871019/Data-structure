@@ -17,10 +17,11 @@ public class Bubble_Sort {
 		int i,j;
 		int counter=0;
 		int codenumber=0;
+		Boolean code=true;
 		
 		Random rand = new Random();
 		for (int z=0;z<num.length;z++){
-			num[z] = rand.nextInt(upperlimit)+1;		// 將隨機數(1-49)放入 sixNum[i]
+			num[z] = rand.nextInt(upperlimit)+1;		// 將隨機數放入 sixNum[i]
 			for (int x=0;x<z;){			// 與前數列比較，若有相同則再取亂數
 				if (num[x] == num[z]){	
 					num[z] = rand.nextInt(upperlimit)+1;
@@ -47,14 +48,6 @@ public class Bubble_Sort {
 					}
 				}
 				
-				if(codenumber == num.length-1 && j == 0) {
-					System.out.print("排序結果：");
-			        for(int original : num){
-			            System.out.print(original + " ");
-			        }
-			        break;
-				}
-				
 				if(codenumber!=num.length-1 && j==0) {
 					System.out.println("處理過程"+(i+1)+"：");
 				}
@@ -73,6 +66,15 @@ public class Bubble_Sort {
 						}
 					}
 				} 
+				
+				if(codenumber == num.length-1 && j == 0) {
+					System.out.print("排序結果：");
+			        for(int original : num){
+			            System.out.print(original + " ");
+			        }
+			        i=num.length-1;
+			        break;
+				}
 			}
 			System.out.println();
 		}

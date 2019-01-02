@@ -17,7 +17,7 @@ public class Quick_Sort {
     	    	
 		Random rand = new Random();
 		for (int i=0;i<10;i++){
-			num[i] = rand.nextInt(upperlimit)+1;		// 將隨機數(1-49)放入 sixNum[i]
+			num[i] = rand.nextInt(upperlimit)+1;		// 將隨機數放入 sixNum[i]
 			for (int j=0;j<i;){			// 與前數列比較，若有相同則再取亂數
 				if (num[j] == num[i]){	
 					num[i] = rand.nextInt(upperlimit)+1;
