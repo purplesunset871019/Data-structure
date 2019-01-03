@@ -67,13 +67,24 @@ public class Bubble_Sort {
 					}
 				} 
 				
-				if(codenumber == num.length-1 && j == 0) {
-					System.out.print("排序結果：");
-			        for(int original : num){
-			            System.out.print(original + " ");
-			        }
-			        i=num.length-1;
-			        break;
+				if(codenumber == num.length-1) {
+					if(j==0) {
+						System.out.print("排序結果：");
+				        for(int original : num){
+				            System.out.print(original + " ");
+				        }
+				        i=num.length-1;
+				        break;
+					}
+					else {
+						System.out.println();
+						System.out.print("排序結果：");
+				        for(int original : num){
+				            System.out.print(original + " ");
+				        }
+				        i=num.length-1;
+				        break;
+					}
 				}
 			}
 			System.out.println();
